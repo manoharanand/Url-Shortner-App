@@ -1,0 +1,58 @@
+<div class="url-form-container">
+  <!-- Welcome Header -->
+  <div class="welcome-header">
+    <div class="welcome-content">
+      <h1>Welcome, {{ username }}!</h1>
+      <button mat-button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- User's URLs Section -->
+  <div class="user-urls-section" *ngIf="!isLoading">
+    <h2>Your Short URLs</h2>
+    <div *ngIf="userUrls.length === 0" class="no-urls-message">
+      <p>You haven't created any short URLs yet. Create one below!</p>
+    </div>
+    <div *ngIf="userUrls.length > 0" class="urls-list">
+      <div *ngFor="let url of userUrls" class="url-item">
+        <div class="url-details">
+          <div class="short-url">
+            <strong>Short URL:</strong>
+            <a [href]="url.short_url" target="_blank">{{ url.short_url }}</a>
+          </div>
+          <div class="long-url">
+            <strong>Long URL:</strong>
+            <p title="{{ url.long_url }}">{{ url.long_url }}</p>
+          </div>
+          <div class="url-meta">
+            <small *ngIf="url.created_at">Created: {{ url.created_at | date: 'medium' }}</small>
+            <small *ngIf="url.expires_at" class="expires">Expires: {{ url.expires_at | date: 'medium' }}</small>
+            <small *ngIf="!url.expires_at" class="no-expiry">No expiration</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Short URL Form -->
+  <div class="create-url-section">
+    <h2>Create a New Short URL</h2>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Long URL</mat-label>
+        <input matInput [(ngModel)]="longUrl" name="longUrl" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Custom Alias (optional)</mat-label>
+        <input matInput [(ngModel)]="customAlias" name="customAlias">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Expiration Date (optional)</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="expirationDate" name="expirationDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Create Short URL</button>
+    </form>
+  </div>
+</div>

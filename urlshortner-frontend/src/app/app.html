@@ -1,0 +1,20 @@
+<div class="app-shell">
+	<header class="navbar">
+		<div class="navbar__brand">
+			<span class="brand-logo">U</span>
+			<div class="brand-text">
+				<span class="brand-name">URL Shortener</span>
+				<span class="brand-tag">Fast links, smart redirects</span>
+			</div>
+		</div>
+		<nav class="navbar__links">
+			<a routerLink="/register" routerLinkActive="active">Register</a>
+			<a routerLink="/login" routerLinkActive="active">Login</a>
+			<a routerLink="/url-form" routerLinkActive="active">Create</a>
+		</nav>
+	</header>
+
+	<main class="content">
+		<router-outlet></router-outlet>
+	</main>
+</div>
