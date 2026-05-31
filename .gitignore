@@ -1,0 +1,31 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backend (Maven)
+urlshortner-backend/target/
+urlshortner-backend/.m2/
+urlshortner-backend/*.log
+urlshortner-backend/.classpath
+urlshortner-backend/.project
+urlshortner-backend/.settings/
+
+# Frontend (Node)
+urlshortner-frontend/node_modules/
+urlshortner-frontend/dist/
+urlshortner-frontend/.angular/
+urlshortner-frontend/npm-debug.log
+urlshortner-frontend/yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.pem
